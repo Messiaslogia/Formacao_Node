@@ -6,7 +6,6 @@ const Perguntas = require("./database/Pergunta")
 const Resposta = require("./database/Resposta")
 
 // Database
-
 connection.authenticate()
     .then(() => {
         console.log("Conexão feita com o banco de dados!")
