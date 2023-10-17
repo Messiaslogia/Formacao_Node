@@ -83,6 +83,7 @@ app.delete("/game/:id", (req, res) => {
     }
 })
 
+//Editando um jogo
 app.put("/game/:id", (req, res) => {
     if (isNaN(req.params.id)) {
         res.sendStatus(400);
