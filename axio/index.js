@@ -1,20 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const connection = require("../rest/database/database")
 const cors = require("cors")
 
 app = express();
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(cors());
 
-connection.authenticate()
-    .then(() => {
-        console.log("Conexão feita com o banco de dados!")
-    })
-    .catch((msgErro) =>{
-        console.log(msgErro)
-    })
+
 
 const DB = {
     games: [
