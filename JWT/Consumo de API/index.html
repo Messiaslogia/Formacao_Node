@@ -27,6 +27,30 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+
+    var axiosConfig = {
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("token")
+        }
+    }
+
+    function login(){
+        var emailField = document.getElementById("email");
+        var passwordFileld = document.getElementById("password")
+
+        var email = emailField.value;
+        var password = passwordField.value;
+
+        axios.post("http://localhost:45679/auth",{
+            email,
+            password
+        }).then(res => {
+            var token = res.data.token
+            localstorage.setItem("token", token)
+        }).catch(err => {
+            alert("login incorreto")
+        })
+    }
     
     function createGame(){
         var titleInput = document.getElementById("title");
@@ -94,7 +118,7 @@
     }
 
 
-    axios.get("http://localhost:45679/games").then(response => {
+    axios.get("http://localhost:45679/games", axiosConfig).then(response => {
         var games = response.data;
         var list = document.getElementById("games");
 
