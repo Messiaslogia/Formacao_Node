@@ -47,6 +47,7 @@
         }).then(res => {
             var token = res.data.token
             localstorage.setItem("token", token)
+            axiosConfig.headers.Authorization = "Bearer " + localStorage.getItem("token")
         }).catch(err => {
             alert("login incorreto")
         })
